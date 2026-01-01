@@ -1,0 +1,29 @@
+#include "filter.hpp"
+
+inline std::uint64_t nthHash(std::uint8_t n, std::uint64_t hashA,
+                             std::uint64_t hashB, std::uint64_t filterSize) {
+  return (hashA + n * hashB) % filterSize;
+}
+
+constexpr bool BloomFilter::add(const uint8_t *const data,
+                                const std::size_t len) {
+  auto hash_res = my_hash(data, len);
+
+  for (size_t n = 0; n < num_hashes; n++) {
+    bits[nthHash(n, hash_res[0], hash_res[1], bits.size())] = true;
+  }
+
+  return true;
+}
+constexpr bool BloomFilter::possiblyContains(const uint8_t *const data,
+                                             const std::size_t len) const {
+  auto hash_res = my_hash(data, len);
+
+  for (int n = 0; n < num_hashes; n++) {
+    if (!bits[nthHash(n, hash_res[0], hash_res[1], bits.size())]) {
+      return false;
+    }
+  }
+
+  return true;
+}

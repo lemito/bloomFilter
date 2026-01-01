@@ -1,0 +1,12 @@
+cc_library(
+    name = "my_hash",
+    hdrs = ["my_hash.hpp"],
+    srcs = ["my_hash.cpp"],
+    deps = ["@abseil-cpp//absl/hash"],
+)
+
+cc_binary(
+    name = "my_hash_test",
+    srcs = ["test.cpp"],
+    deps = ["my_hash"],
+)

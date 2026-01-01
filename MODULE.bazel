@@ -1,0 +1,13 @@
+module(
+    name = "bloom_filter",
+    version = "head",
+    compatibility_level = 1,
+)
+
+cc_configure = use_extension("@rules_cc//cc:extensions.bzl",
+                             "cc_configure_extension",
+                             dev_dependency = True)
+use_repo(cc_configure, "local_config_cc")
+
+bazel_dep(name = "rules_cc", version = "0.2.9")
+bazel_dep(name = "abseil-cpp", version = "20250814.1")

@@ -1,0 +1,12 @@
+cc_library(
+    name = "filter",
+    hdrs = ["filter.hpp"],
+    srcs = ["filter.cpp"],
+    deps = ["//bloomFilter/hash:my_hash"],
+)
+
+cc_binary(
+    name = "filter_test",
+    srcs = ["test.cpp"],
+    deps = ["filter"],
+)
