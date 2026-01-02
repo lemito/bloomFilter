@@ -4,5 +4,6 @@
 #include <array>
 #include <cstdint>
 #include <stdexcept>
+#include <string_view>
 
 std::array<std::uint64_t, 2> my_hash(const std::uint8_t *data, std::size_t len);

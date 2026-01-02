@@ -1,0 +1,13 @@
+build:windows --cxxopt=/std:c++23
+build:windows --host_cxxopt=/std:c++23
+build:linux --cxxopt=-std=c++23
+build:linux --host_cxxopt=-std=c++23
+build:macos --cxxopt=-std=c++23
+build:macos --host_cxxopt=-std=c++23
+
+build --config=windows --enable_platform_specific_config
+build --config=linux --enable_platform_specific_config  
+build --config=macos --enable_platform_specific_config
+
+build --copt=-O2
+build --copt=-DNDEBUG
